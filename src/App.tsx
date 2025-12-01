@@ -20,6 +20,10 @@ function App() {
     setShowReward(false);
   };
 
+  const handleCloseScratch = () => {
+    setCurrentScreen('tracking');
+  };
+
   return (
     <div>
       {currentScreen === 'tracking' && (
@@ -27,7 +31,10 @@ function App() {
       )}
       
       {currentScreen === 'scratch' && (
-        <ScratchCardIntro onComplete={handleScratchComplete} />
+        <ScratchCardIntro 
+          onComplete={handleScratchComplete} 
+          onClose={handleCloseScratch}
+        />
       )}
 
       <RewardPopup 

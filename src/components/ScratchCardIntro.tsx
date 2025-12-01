@@ -3,9 +3,10 @@ import React, { useRef, useEffect, useState } from 'react';
 // This tells us what the scratch card needs to work
 interface ScratchCardIntroProps {
   onComplete: () => void; // Function to call when scratching is done
+  onClose?: () => void; // Function to call when close button is clicked
 }
 
-const ScratchCardIntro: React.FC<ScratchCardIntroProps> = ({ onComplete }) => {
+const ScratchCardIntro: React.FC<ScratchCardIntroProps> = ({ onComplete, onClose }) => {
   // This helps us draw on the scratch surface
   const canvasRef = useRef<HTMLCanvasElement>(null);
   // This tracks if user is currently scratching
@@ -129,6 +130,31 @@ const ScratchCardIntro: React.FC<ScratchCardIntroProps> = ({ onComplete }) => {
           position: 'relative',
           boxSizing: 'border-box'
         }}>
+        {/* Close button */}
+        {onClose && (
+          <button
+            onClick={onClose}
+            style={{
+              position: 'absolute',
+              top: '15px',
+              right: '15px',
+              background: 'rgba(0,0,0,0.1)',
+              border: 'none',
+              borderRadius: '50%',
+              width: '30px',
+              height: '30px',
+              fontSize: '16px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 30
+            }}
+          >
+            ✕
+          </button>
+        )}
+        
         {/* Header text */}
         <div style={{
           color: '#333',
