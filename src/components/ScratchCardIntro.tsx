@@ -69,7 +69,7 @@ const ScratchCardIntro: React.FC<ScratchCardIntroProps> = ({ onComplete }) => {
     // Set up the eraser tool to remove the green surface
     ctx.globalCompositeOperation = 'destination-out';
     ctx.beginPath();
-    ctx.arc(x, y, 25, 0, 2 * Math.PI);
+    ctx.arc(x, y, 35, 0, 2 * Math.PI);
     ctx.fill();
 
     // Count how much has been scratched off
@@ -82,8 +82,8 @@ const ScratchCardIntro: React.FC<ScratchCardIntroProps> = ({ onComplete }) => {
       if (pixels[i] === 0) transparent++;
     }
 
-    // If more than 40% is scratched, show the prize
-    if ((transparent / (320 * 200)) * 100 > 40) {
+    // If more than 20% is scratched, show the prize
+    if ((transparent / (320 * 200)) * 100 > 20) {
       setShowCoins(true); // Start coin animation
       setTimeout(onComplete, 1500); // Wait 1.5 seconds then show prize
     }
